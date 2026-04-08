@@ -87,69 +87,56 @@ $rows = getData("producten");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-<title>CRUD Webshop</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTech Shop - Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Producten CRUD</h1>
+<header>
+    <h1>NovaTech Shop</h1>
+</header>
 
-<h2>Product toevoegen / bewerken</h2>
+<nav>
+    <a href="index.php">Home</a>
+    <a href="producten.php">Producten</a>
+    <a href="#">Aanbiedingen</a>
+    <a href="#">Winkelwagen</a>
+</nav>
 
-<form method="post">
+<main>
+    <section class="welcome">
+        <h2>Welkom bij NovaTech Shop</h2>
+        <p>Bekijk onze nieuwste producten</p>
+    </section>
 
-<input type="hidden" name="id" value="<?= $editRow['id'] ?? '' ?>">
+    <section class="product-grid">
+        <div class="card">
+            <div class="img-box">Afbeelding</div>
+            <h3>Telefoonhoesje</h3>
+            <p>€15</p>
+        </div>
 
-Naam:
-<input type="text" name="naam" 
-value="<?= $editRow['naam'] ?? '' ?>" required>
+        <div class="card">
+            <div class="img-box">Afbeelding</div>
+            <h3>Oplader</h3>
+            <p>€20</p>
+        </div>
 
-Prijs:
-<input type="number" step="0.01" name="prijs"
-value="<?= $editRow['prijs'] ?? '' ?>" required>
+        <div class="card">
+            <div class="img-box">Afbeelding</div>
+            <h3>Oordopjes</h3>
+            <p>€30</p>
+        </div>
+    </section>
+</main>
 
-Categorie:
-<input type="text" name="categorie"
-value="<?= $editRow['categorie'] ?? '' ?>" required>
-
-<?php if($editRow): ?>
-<button name="update">Update</button>
-<?php else: ?>
-<button name="toevoegen">Toevoegen</button>
-<?php endif; ?>
-
-</form>
-
-<h2>Alle producten</h2>
-
-<table>
-<tr>
-<th>ID</th>
-<th>Naam</th>
-<th>Prijs</th>
-<th>Categorie</th>
-<th>Actie</th>
-</tr>
-
-<?php foreach($rows as $r): ?>
-
-<tr>
-<td><?= $r['id'] ?></td>
-<td><?= $r['naam'] ?></td>
-<td>€<?= $r['prijs'] ?></td>
-<td><?= $r['categorie'] ?></td>
-<td>
-<a href="?edit=<?= $r['id'] ?>">Bewerken</a> |
-<a href="?delete=<?= $r['id'] ?>">Verwijderen</a>
-</td>
-</tr>
-
-<?php endforeach; ?>
-
-</table>
+<footer>
+    <p>Contact | Over ons | Klantenservice</p>
+</footer>
 
 </body>
 </html>
